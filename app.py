@@ -1,7 +1,9 @@
 import os
 import requests as req
-from flask import Flask, request, render_template_string
-
+from flask import Flask, request, render_template_string, send_file
+@app.route("/Aondofa.jpeg")
+def photo():
+    return send_file("Aondofa.jpeg", mimetype="image/jpeg")
 app = Flask(__name__)
 
 VERIFY_TOKEN = "techbeat123"
@@ -47,7 +49,7 @@ def get_reply(num, text):
     if key in voters:
         voter = voters[key]
         user_state[num] = voter
-        return f"I found: {voter['name']}, {dob}, {lga.title()}. Is this you? Reply YES or NO"
+       return f"I found: {voter['name']}, {dob}, {lga.title()}. Is this you? Reply YES or NO\n\n📸 Your photo: https://techbeat-demo.onrender.com/Aondofa.jpeg"
     
     # Check if same name exists with different DOB (duplicate name case)
     matches = [v for k, v in voters.items() if k.startswith(name + "|") and k.endswith("|" + lga)]
