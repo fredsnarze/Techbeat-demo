@@ -1,6 +1,6 @@
 import os
 import requests as req
-from flask import Flask, request, render_template_string, send_file
+from flask import Flask, request, render_template_string,send_file
 @app.route("/Aondofa.jpeg")
 def photo():
     return send_file("Aondofa.jpeg", mimetype="image/jpeg")
